@@ -1,13 +1,11 @@
 
+FILE H：
 
 #ifndef MYAPPLICATION2_DOBBB_H
 #define MYAPPLICATION2_DOBBB_H
 
 
 #include "student.h"
-
-void stcMet(){
-}
 
 class Dobbb : public stu {
 public:
@@ -25,6 +23,8 @@ protected:
 
 #endif //MYAPPLICATION2_DOBBB_H
 
+FILE CPP：
+
 #include "Dobbb.h"
 
 Dobbb::Dobbb() {
@@ -33,6 +33,49 @@ Dobbb::Dobbb() {
 
 Dobbb::Dobbb(int a) {
     ss = a;
-    Dobbb::makeStu();
-    makeStu();
 }
+
+最后我想要用到这个类，通过new来得到他的指针。
+
+#include <jni.h>
+#include <string>
+#include "Dobbb.h"
+
+extern "C"
+
+
+JNIEXPORT jobject JNICALL Java_com_example_ishiiaya_myapplication_MainActivity_stringFromJNI(
+        JNIEnv *env,
+        jobject /* this */) {
+    std::string hello = "Hello from C++";
+    jobject *sss;
+    sss = new jobject();
+    Dobbb *ddddd = new Dobbb();
+    delete ddddd;
+    return *sss;
+}
+
+但是这样会报错。错误是“undefine reference to Dobbb:Dobbb”
+
+然后原因是所谓的链接错误。为了解决这个错误，需要重新写链接定义文件。
+
+因为我用的是安卓的NDK，我就这样定义了：
+
+CMakeLists.txt
+
+add_library( # Sets the name of the library.
+             native-lib
+
+             # Sets the library as a shared library.
+             SHARED
+
+             # Provides a relative path to your source file(s).
+             src/main/cpp/native-lib.cpp
+             src/main/cpp/Dobbb.cpp) <-在这里追加一行就OK了。
+             
+然后就显示编译成功了。
+
+!!!如果我定义在了H文件里面，那么就不用加上链接命令。
+!!!如果我定义在了H文件里面，那么就不用加上链接命令。
+!!!如果我定义在了H文件里面，那么就不用加上链接命令。
+cpp-》编译 h-》预处理
