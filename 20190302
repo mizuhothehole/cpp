@@ -1,0 +1,38 @@
+
+
+#ifndef MYAPPLICATION2_DOBBB_H
+#define MYAPPLICATION2_DOBBB_H
+
+
+#include "student.h"
+
+void stcMet(){
+}
+
+class Dobbb : public stu {
+public:
+    Dobbb();
+
+    Dobbb(int a);
+
+    virtual ~Dobbb() {}
+
+protected:
+    int ss;
+
+};
+
+
+#endif //MYAPPLICATION2_DOBBB_H
+
+#include "Dobbb.h"
+
+Dobbb::Dobbb() {
+
+}
+
+Dobbb::Dobbb(int a) {
+    ss = a;
+    Dobbb::makeStu();
+    makeStu();
+}
