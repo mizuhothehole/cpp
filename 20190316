@@ -66,3 +66,92 @@ Python 2.7.10
 ishiiryounoAir:cocos2d-x-3.17.1 ishiiaya$ 
 
 After doing this, use android studio to open the sample project under proj.android folder in sample directory.
+
+It is taking a lot of time building a apk.
+
+Gradle console:
+
+Executing tasks: [:sample:assembleDebug]
+
+External native generate JSON debug: building json with force flag false
+External native generate JSON debug: starting JSON generation
+External native generate JSON debug: using platform version 16 for ABI ARMEABI_V7A and min SDK version 16
+External native generate JSON debug: JSON '/Users/ishiiaya/Desktop/cocos2d-x-3.17.1/sample/sample/proj.android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/android_gradle_build.json' was up-to-date
+External native generate JSON debug: JSON generation completed without problems
+:sample:buildInfoDebugLoader
+:libcocos2dx:preBuild UP-TO-DATE
+:libcocos2dx:preDebugBuild UP-TO-DATE
+:libcocos2dx:compileDebugAidl UP-TO-DATE
+:libcocos2dx:compileDebugRenderscript UP-TO-DATE
+:libcocos2dx:checkDebugManifest UP-TO-DATE
+:libcocos2dx:generateDebugBuildConfig UP-TO-DATE
+:libcocos2dx:generateDebugResValues UP-TO-DATE
+:libcocos2dx:generateDebugResources UP-TO-DATE
+:libcocos2dx:packageDebugResources UP-TO-DATE
+:libcocos2dx:platformAttrExtractor
+:libcocos2dx:processDebugManifest
+:libcocos2dx:prepareLintJar UP-TO-DATE
+:libcocos2dx:javaPreCompileDebug UP-TO-DATE
+:libcocos2dx:processDebugJavaRes NO-SOURCE
+:sample:preBuild UP-TO-DATE
+:sample:preDebugBuild
+:sample:compileDebugAidl UP-TO-DATE
+:libcocos2dx:packageDebugRenderscript NO-SOURCE
+:sample:compileDebugRenderscript UP-TO-DATE
+:sample:checkDebugManifest UP-TO-DATE
+:sample:generateDebugBuildConfig UP-TO-DATE
+:sample:prepareLintJar UP-TO-DATE
+:sample:mainApkListPersistenceDebug UP-TO-DATE
+:sample:generateDebugResValues UP-TO-DATE
+:sample:generateDebugResources UP-TO-DATE
+:sample:mergeDebugResources UP-TO-DATE
+:sample:createDebugCompatibleScreenManifests UP-TO-DATE
+:sample:processDebugManifest
+:sample:splitsDiscoveryTaskDebug UP-TO-DATE
+:libcocos2dx:mergeDebugShaders UP-TO-DATE
+:libcocos2dx:compileDebugShaders UP-TO-DATE
+:libcocos2dx:generateDebugAssets UP-TO-DATE
+:libcocos2dx:generateDebugRFile
+:libcocos2dx:generateDebugSources
+:libcocos2dx:compileDebugJavaWithJavac UP-TO-DATE
+:libcocos2dx:transformClassesAndResourcesWithPrepareIntermediateJarsForDebug UP-TO-DATE
+:sample:processDebugResources
+:sample:generateDebugSources
+:sample:javaPreCompileDebug UP-TO-DATE
+:sample:compileDebugJavaWithJavac UP-TO-DATE
+:libcocos2dx:packageDebugAssets UP-TO-DATE
+:sample:mergeDebugShaders UP-TO-DATE
+:sample:compileDebugShaders UP-TO-DATE
+:sample:generateDebugAssets UP-TO-DATE
+:sample:mergeDebugAssets
+:sample:packageInstantRunResourcesDebug
+:sample:validateSigningDebug UP-TO-DATE
+:sample:processInstantRunDebugResourcesApk
+:sample:checkManifestChangesDebug
+:sample:transformClassesWithExtractJarsForDebug UP-TO-DATE
+:sample:transformClassesWithInstantRunVerifierForDebug UP-TO-DATE
+:sample:transformClassesWithDependencyCheckerForDebug UP-TO-DATE
+:libcocos2dx:compileDebugNdk NO-SOURCE
+:libcocos2dx:mergeDebugJniLibFolders UP-TO-DATE
+:libcocos2dx:transformNativeLibsWithMergeJniLibsForDebug UP-TO-DATE
+:libcocos2dx:transformNativeLibsWithStripDebugSymbolForDebug UP-TO-DATE
+:libcocos2dx:transformNativeLibsWithIntermediateJniLibsForDebug UP-TO-DATE
+:sample:generateJsonModelDebug UP-TO-DATE
+:sample:externalNativeBuildDebug
+Build MyGame armeabi-v7a
+[1/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/renderer/CCVertexAttribBinding.cpp.o
+[2/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/renderer/CCGLProgram.cpp.o
+[3/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/renderer/CCGLProgramCache.cpp.o
+[4/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/vr/CCVRGenericRenderer.cpp.o
+[5/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/vr/CCVRGenericHeadTracker.cpp.o
+[6/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCAsyncTaskPool.cpp.o
+[7/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCAutoreleasePool.cpp.o
+[8/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCConfiguration.cpp.o
+[9/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCConsole.cpp.o
+[10/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCController.cpp.o
+[11/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCData.cpp.o
+[12/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCDataVisitor.cpp.o
+[13/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/base/CCEventFocus.cpp.o
+[14/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCDatas.cpp.o
+[15/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/PageViewReader/PageViewReader.cpp.o
+
