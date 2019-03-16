@@ -1,0 +1,68 @@
+Create a new project using cocos command
+
+ishiiryounoAir:cocos2d-x-3.17.1 ishiiaya$ ./setup.py 
+
+Setting up cocos2d-x...
+->Check environment variable COCOS_CONSOLE_ROOT
+  ->Search for environment variable COCOS_CONSOLE_ROOT...
+    ->COCOS_CONSOLE_ROOT not found
+
+  -> Add COCOS_CONSOLE_ROOT environment variable...
+    ->Added COCOS_CONSOLE_ROOT=/Users/ishiiaya/Desktop/cocos2d-x-3.17.1/tools/cocos2d-console/bin
+
+->Check environment variable COCOS_X_ROOT
+  ->Search for environment variable COCOS_X_ROOT...
+    ->COCOS_X_ROOT not found
+
+  -> Add COCOS_X_ROOT environment variable...
+    ->Added COCOS_X_ROOT=/Users/ishiiaya/Desktop
+
+->Check environment variable COCOS_TEMPLATES_ROOT
+  ->Search for environment variable COCOS_TEMPLATES_ROOT...
+    ->COCOS_TEMPLATES_ROOT not found
+
+  -> Add COCOS_TEMPLATES_ROOT environment variable...
+    ->Added COCOS_TEMPLATES_ROOT=/Users/ishiiaya/Desktop/cocos2d-x-3.17.1/templates
+
+->Configuration for Android platform only, you can also skip and manually edit "/Users/ishiiaya/.bash_profile"
+
+->Check environment variable NDK_ROOT
+  ->Search for environment variable NDK_ROOT...
+    ->NDK_ROOT not found
+
+  ->Search for command ndk-build in system...
+    ->Command ndk-build not found
+
+  ->Please enter the path of NDK_ROOT (or press Enter to skip):/Users/ishiiaya/Library/Android/sdk/ndk-bundle
+  -> Add NDK_ROOT environment variable...
+    ->Added NDK_ROOT=/Users/ishiiaya/Library/Android/sdk/ndk-bundle
+
+->Check environment variable ANDROID_SDK_ROOT
+  ->Search for environment variable ANDROID_SDK_ROOT...
+    ->ANDROID_SDK_ROOT not found
+
+  ->Search for command android in system...
+    ->Command android not found
+
+  ->Please enter the path of ANDROID_SDK_ROOT (or press Enter to skip):/Users/ishiiaya/Library/Android/sdk
+  -> Add ANDROID_SDK_ROOT environment variable...
+    ->Added ANDROID_SDK_ROOT=/Users/ishiiaya/Library/Android/sdk
+
+
+A backup file "/Users/ishiiaya/.bash_profile.backup1" is created for "/Users/ishiiaya/.bash_profile".
+
+Please execute command: "source /Users/ishiiaya/.bash_profile" to make added system variables take effect
+
+ishiiryounoAir:cocos2d-x-3.17.1 ishiiaya$ source /Users/ishiiaya/.bash_profile
+ishiiryounoAir:cocos2d-x-3.17.1 ishiiaya$ cocos new sample -d /Users/ishiiaya/Desktop/cocos2d-x-3.17.1/sample -p com.hata.sample -l cpp
+Python 2.7.10
+> Copy template into /Users/ishiiaya/Desktop/cocos2d-x-3.17.1/sample/sample
+> Copying Cocos2d-x files...
+> Rename project name from 'HelloCpp' to 'sample'
+> Replace the project name from 'HelloCpp' to 'sample'
+> Replace the project package name from 'org.cocos2dx.hellocpp' to 'com.hata.sample'
+> Replace the Mac bundle id from 'org.cocos2dx.hellocpp' to 'com.hata.sample'
+> Replace the iOS bundle id from 'org.cocos2dx.hellocpp' to 'com.hata.sample'
+ishiiryounoAir:cocos2d-x-3.17.1 ishiiaya$ 
+
+After doing this, use android studio to open the sample project under proj.android folder in sample directory.
