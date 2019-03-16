@@ -155,3 +155,26 @@ Build MyGame armeabi-v7a
 [14/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/CCDatas.cpp.o
 [15/606] Building CXX object engine/cocos/core/CMakeFiles/cocos2d.dir/editor-support/cocostudio/WidgetReader/PageViewReader/PageViewReader.cpp.o
 
+... ...
+... ...
+
+:sample:transformClassesEnhancedWithInstantReloadDexForDebug
+:sample:incrementalDebugTasks
+:sample:preColdswapDebug
+:sample:fastDeployDebugExtractor
+:sample:generateDebugInstantRunAppInfo
+:sample:transformClassesWithInstantRunSlicerForDebug
+:sample:transformClassesWithDexBuilderForDebug
+:sample:transformDexArchiveWithExternalLibsDexMergerForDebug
+:sample:transformDexArchiveWithDexMergerForDebug
+:sample:transformDexWithInstantRunDependenciesApkForDebug
+:sample:transformDexWithInstantRunSlicesApkForDebug
+:sample:transformNativeLibsWithStripDebugSymbolForDebug
+:sample:packageDebug
+:sample:buildInfoGeneratorDebug
+:sample:compileDebugSources
+:sample:assembleDebug
+
+BUILD SUCCESSFUL in 18m 54s
+
+After doing this, I could see a hello world activity in my device.
