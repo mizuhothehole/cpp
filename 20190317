@@ -27,3 +27,7 @@ I got it running, cool!!!
     customSprite->addChild(sprite);
     customSprite->removeAllChildren();
     this->addChild(customSprite, 1);
+
+elasticity 弹性
+friction 摩擦
+collision 冲突
