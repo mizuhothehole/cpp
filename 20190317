@@ -1,0 +1,16 @@
+Cpp basic
+
+1.我发现在有的函数声明当中有用=0这样的东西的。
+简单的查了一下，好像是所谓的纯虚函数。
+这种函数只能子类里面进行重写。
+
+2.nullptr是cpp的空指针
+
+I got it running, cool!!!
+
+    Sprite* customSprite = Sprite::create("HelloWorld.png");
+    customSprite->setPosition(50,50);
+    MoveTo* action = MoveTo::create(2, Vec2(100, 100));
+    MoveBy* action1 = MoveBy::create(2, Vec2(100, 200));
+    customSprite->runAction(Sequence::create(action, action1, nullptr));
+    this->addChild(customSprite, 1);
