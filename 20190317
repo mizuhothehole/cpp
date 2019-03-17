@@ -14,3 +14,16 @@ I got it running, cool!!!
     MoveBy* action1 = MoveBy::create(2, Vec2(100, 200));
     customSprite->runAction(Sequence::create(action, action1, nullptr));
     this->addChild(customSprite, 1);
+
+下面我又改了一下。结果helloworld会在画面上飞来飞去的。
+
+    Sprite* customSprite = Sprite::create("sakura.jpg");
+    customSprite->setPosition(50,50);
+    MoveTo* action = MoveTo::create(2, Vec2(100, 100));
+    MoveBy* action1 = MoveBy::create(2, Vec2(100, 200));
+    customSprite->runAction(Sequence::create(action, action1, nullptr));
+    SpriteFrame* spriteFrame = SpriteFrame::create("HelloWorld.png", Rect(0,0,100,100));
+    customSprite->setSpriteFrame(spriteFrame);
+    customSprite->addChild(sprite);
+    customSprite->removeAllChildren();
+    this->addChild(customSprite, 1);
