@@ -43,3 +43,23 @@ int Num::getNum()
 customSprite->setContentSize(Size(50, 50));
 
 这个方法可以把图片变小。
+
+cocos2d-x
+
+    for(int j = 0; j < 50; j++) {
+        for(int i = 0; i < 50; i++) {
+            Sprite* customSprite = Sprite::create("chinnchinn.jpg");
+            if (customSprite == nullptr) {
+                problemLoading("'chinnchinn.jpg'");
+            }
+            customSprite->setPosition(2*i,50);
+            customSprite->setContentSize(Size(10, 10));
+            MoveTo* action = MoveTo::create(2, Vec2(10*i*j, 10*i*j));
+            MoveBy* action1 = MoveBy::create(2, Vec2(10*i*j, 15*i*j));
+            MoveBy* action2 = MoveBy::create(1, Vec2(10000, 10000));
+            customSprite->runAction(Sequence::create(action, action1, action2, nullptr));
+            this->addChild(customSprite);
+        }
+    }
+    
+    
