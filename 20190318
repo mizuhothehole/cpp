@@ -76,3 +76,39 @@ cocos2d-x
                 break;
         }
     });
+
+    ui::Button* button = ui::Button::create("chinnchinn.jpg", "chinnchinn.jpg", "chinnchinn.jpg",
+    cocos2d::ui::Widget::TextureResType::LOCAL);
+    button->addTouchEventListener([&](Ref* sender, ui::Widget::TouchEventType type) {
+        switch (type)
+        {
+            case ui::Widget::TouchEventType::BEGAN:
+                break;
+            case ui::Widget::TouchEventType::ENDED:
+                std::cout << "Button 1 clicked" << std::endl;
+                this->removeAllChildren();
+                break;
+            default:
+                break;
+        }
+    });
+
+
+    ui::Button* button = ui::Button::create("chinnchinn.jpg", "chinnchinn.jpg", "chinnchinn.jpg",
+    cocos2d::ui::Widget::TextureResType::LOCAL);
+    button->addTouchEventListener([&](Ref* sender, ui::Widget::TouchEventType type) {
+        switch (type)
+        {
+            case ui::Widget::TouchEventType::BEGAN:
+                break;
+            case ui::Widget::TouchEventType::ENDED:
+                std::cout << "Button 1 clicked" << std::endl;
+                this->removeAllChildren();
+                break;
+            default:
+                break;
+        }
+    });
+    this->addChild(button);
+    
+Code like this works well.
