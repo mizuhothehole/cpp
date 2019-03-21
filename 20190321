@@ -11,3 +11,24 @@
     _editPassword->setText("初期文字");
     addChild(_editPassword);
     return true;
+
+// now shown in test...
+
+    ui::CheckBox* checkbox = ui::CheckBox::create();
+    checkbox->setColor(Color3B::GREEN);
+    checkbox->setContentSize(Size(50, 50));
+    checkbox->setPosition(Vec2(120, 100));
+    checkbox->addTouchEventListener([&](Ref* sender, ui::Widget::TouchEventType type){
+        switch (type)
+        {
+            case ui::Widget::TouchEventType::BEGAN:
+                break;
+            case ui::Widget::TouchEventType::ENDED:
+                std::cout << "checkbox 1 clicked" << std::endl;
+                break;
+            default:
+                break;
+        }
+    });
+    checkbox->setGlobalZOrder(100);
+    this->addChild(checkbox);
