@@ -1,5 +1,7 @@
     How to create a editbox with password
     
+// this is shown well.
+
     cocos2d::ui::EditBox* _editPassword = ui::EditBox::create(Size(visibleSize.width/3, 90), "chinnchinn.png");
     _editPassword->setPosition(Vec2(origin.x+visibleSize.width/2, origin.y+visibleSize.height/2));
     _editPassword->setFont("American Typewriter", 16);
@@ -32,3 +34,9 @@
     });
     checkbox->setGlobalZOrder(100);
     this->addChild(checkbox);
+
+// this is showing
+    ui::Scale9Sprite *_sprite = ui::Scale9Sprite::create("chinnchinn.jpg");
+    _sprite->setPosition(Vec2(visibleSize.width, visibleSize.height));
+    this->addChild(_sprite);
+    
