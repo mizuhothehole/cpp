@@ -14,7 +14,7 @@
     addChild(_editPassword);
     return true;
 
-// now shown in test...
+// now shown in test. maybe the position is not very good
 
     ui::CheckBox* checkbox = ui::CheckBox::create();
     checkbox->setColor(Color3B::GREEN);
