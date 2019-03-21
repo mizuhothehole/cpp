@@ -1,0 +1,13 @@
+    How to create a editbox with password
+    
+    cocos2d::ui::EditBox* _editPassword = ui::EditBox::create(Size(visibleSize.width/3, 90), "chinnchinn.png");
+    _editPassword->setPosition(Vec2(origin.x+visibleSize.width/2, origin.y+visibleSize.height/2));
+    _editPassword->setFont("American Typewriter", 16);
+    _editPassword->setFontColor(Color3B::GREEN);
+    _editPassword->setPlaceHolder("Password:");
+    _editPassword->setMaxLength(6);
+    _editPassword->setInputFlag(ui::EditBox::InputFlag::PASSWORD);
+    _editPassword->setInputMode(ui::EditBox::InputMode::SINGLE_LINE);
+    _editPassword->setText("初期文字");
+    addChild(_editPassword);
+    return true;
