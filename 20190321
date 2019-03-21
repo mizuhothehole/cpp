@@ -39,4 +39,12 @@
     ui::Scale9Sprite *_sprite = ui::Scale9Sprite::create("chinnchinn.jpg");
     _sprite->setPosition(Vec2(visibleSize.width, visibleSize.height));
     this->addChild(_sprite);
+
+// this is showing out well
+    std::string s = "rtz hill king";
+    s += std::to_string(visibleSize.width);
+    s += std::to_string(visibleSize.height);
+    ui::TextField* _testField = ui::TextField::create(s, "American Typewriter", 18);
+    _testField->setPosition(Vec2(visibleSize.width - 100, visibleSize.height - 100));
+    this->addChild(_testField);
     
