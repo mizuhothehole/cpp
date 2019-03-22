@@ -169,3 +169,65 @@ Java_ntt_1atc_co_jp_myapplication_MainActivity_stringFromJNI(
     // multiple definition and to group those elements that are for the same function.
     // ************************************************
 }
+
+#include <jni.h>
+#include <string>
+
+extern "C"
+
+class Myclass {
+
+private:
+    int ma;
+    int mb;
+
+public:
+    Myclass(int a, int b) {
+        ma = a;
+        mb = b;
+    }
+
+    Myclass operator+(Myclass mc) {
+        this->ma = this->ma + mc.ma;
+        this->mb = this->mb + mc.mb;
+        return *this;
+    }
+
+    Myclass operator-(Myclass mc) {
+        this->ma = this->ma - mc.ma;
+        this->mb = this->mb - mc.mb;
+        return *this;
+    }
+
+    Myclass operator*(Myclass mc) {
+        this->ma = this->ma * mc.ma;
+        this->mb = this->mb * mc.mb;
+        return *this;
+    }
+
+    Myclass operator/(Myclass mc) {
+        this->ma = this->ma * mc.ma;
+        this->mb = this->mb * mc.mb;
+        return *this;
+    }
+
+    void print() {
+    }
+};
+
+JNIEXPORT jstring
+
+JNICALL
+Java_com_example_ishiiaya_myapplication_MainActivity_stringFromJNI(
+        JNIEnv *env,
+        jobject /* this */) {
+    Myclass c1(1, 1);
+    Myclass c2(2, 3);
+    Myclass c3 = c1 + c2;
+    Myclass c4 = c1 - c2;
+    Myclass c5 = c1 * c2;
+    Myclass c6 = c1 / c2;
+    c3.print();
+    std::string hello = "Hello from C++";
+    return env->NewStringUTF(hello.c_str());
+}
