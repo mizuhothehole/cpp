@@ -1,0 +1,139 @@
+#include <jni.h>
+#include <string>
+#include <any>
+#include <misc/cxl.h>
+#include "N1.h"
+#include "N2.h"
+
+int hahaha4444 = 2;
+
+typedef int INT;
+typedef long LONG;
+
+struct sasa {
+    INT sasa1;
+    LONG sasa2;
+    INT sasa3;
+};
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_ntt_1atc_co_jp_myapplication_MainActivity_stringFromJNI(
+        JNIEnv *env,
+        jobject /* this */) {
+
+    std::string hello = "Hello from C++" +
+                        std::to_string(__ANDROID_API_G__) +
+                        std::to_string(2.22);
+    std::bad_any_cast cl = std::bad_any_cast{};
+    cl.what();
+    cxl_ioctl_start_work work = {
+            22
+    };
+    INT aa = 3;
+    LONG bb = 22;
+    sasa ss = {
+            2,
+            2,
+            2
+    };
+    int a1 = ss.sasa1;
+    long a2 = ss.sasa2;
+    int a3 = ss.sasa3;
+    test::test test1;
+    test::test test2;
+    return env->NewStringUTF(hello.c_str());
+    // ************************************************
+    // The static library is compiled to executable with other .o files.
+    // The dynamic library is called only the program start running. It saved resource and simplified deploying.
+    // ************************************************
+    // ************************************************
+    // Something about name space
+    // See this error:
+    // ************************************************
+    //    Build command failed.
+    //            Error while executing process C:\Users\xxx\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe with arguments {--build C:\Users\xxx\Desktop\NewPro\app\.externalNativeBuild\cmake\debug\x86_64 --target native-lib}
+    //    [1/2] Building CXX object CMakeFiles/native-lib.dir/native-lib.cpp.o
+    //    FAILED: C:\Users\xxx\AppData\Local\Android\Sdk\ndk-bundle\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe  --target=x86_64-none-linux-android26 --gcc-toolchain=C:/Users/xxx/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/xxx/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC -MD -MT CMakeFiles/native-lib.dir/native-lib.cpp.o -MF CMakeFiles\native-lib.dir\native-lib.cpp.o.d -o CMakeFiles/native-lib.dir/native-lib.cpp.o -c C:\Users\xxx\Desktop\NewPro\app\src\main\cpp\native-lib.cpp
+    //    In file included from C:\Users\xxx\Desktop\NewPro\app\src\main\cpp\native-lib.cpp:6:
+    //
+    //    C:\Users\xxx\Desktop\NewPro\app\src\main\cpp/N2.h:9:18: error: typedef redefinition with different types ('long' vs 'int')
+    //
+    //    typedef long test;
+    //
+    //    ^
+    //
+    //    C:\Users\xxx\Desktop\NewPro\app\src\main\cpp/N1.h:9:13: note: previous definition is here
+    //
+    //    typedef int test;
+    // ************************************************
+    // Seems this name space has the meaning of "Link all the defines in different files, and every define should be unique"
+    // "No matter what the type is."
+    // ************************************************
+    // To prove this I also made a mistaken of class define:
+    //    Build command failed.
+    //            Error while executing process C:\Users\xxx\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe with arguments {--build C:\Users\xxx\Desktop\NewPro\app\.externalNativeBuild\cmake\debug\x86_64 --target native-lib}
+    //    [1/3] Building CXX object CMakeFiles/native-lib.dir/native-lib.cpp.o
+    //    [2/3] Building CXX object CMakeFiles/native-lib.dir/N1.cpp.o
+    //    FAILED: C:\Users\xxx\AppData\Local\Android\Sdk\ndk-bundle\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe  --target=x86_64-none-linux-android26 --gcc-toolchain=C:/Users/xxx/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/xxx/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC -MD -MT CMakeFiles/native-lib.dir/native-lib.cpp.o -MF CMakeFiles\native-lib.dir\native-lib.cpp.o.d -o CMakeFiles/native-lib.dir/native-lib.cpp.o -c C:\Users\xxx\Desktop\NewPro\app\src\main\cpp\native-lib.cpp
+    //    In file included from C:\Users\xxx\Desktop\NewPro\app\src\main\cpp\native-lib.cpp:6:
+    //
+    //    C:\Users\xxx\Desktop\NewPro\app\src\main\cpp/N2.h:10:11: error: redefinition of 'testClass'
+    //
+    //    class testClass{};
+    //
+    //    ^
+    //
+    //    C:\Users\xxx\Desktop\NewPro\app\src\main\cpp/N1.h:10:11: note: previous definition is here
+    //
+    //    class testClass{};
+    //
+    //    ^
+    //
+    //    1 error generated.
+    // ************************************************
+    // So name space seems to have "external-linking" function automatically
+    // And those global variables that are announced in the head of a cpp/h file, they seem to be managed
+    // in the same "name space that has no name". To prove this, under here it is the sample:
+    // ************************************************
+    //    Build command failed.
+    //            Error while executing process C:\Users\xxx\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe with arguments {--build C:\Users\xxx\Desktop\NewPro\app\.externalNativeBuild\cmake\debug\x86_64 --target native-lib}
+    //    [1/4] Building CXX object CMakeFiles/native-lib.dir/N1.cpp.o
+    //    [2/4] Building CXX object CMakeFiles/native-lib.dir/native-lib.cpp.o
+    //    [3/4] Building CXX object CMakeFiles/native-lib.dir/N2.cpp.o
+    //    FAILED: C:\Users\xxx\AppData\Local\Android\Sdk\ndk-bundle\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe  --target=x86_64-none-linux-android26 --gcc-toolchain=C:/Users/xxx/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/xxx/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC -MD -MT CMakeFiles/native-lib.dir/native-lib.cpp.o -MF CMakeFiles\native-lib.dir\native-lib.cpp.o.d -o CMakeFiles/native-lib.dir/native-lib.cpp.o -c C:\Users\xxx\Desktop\NewPro\app\src\main\cpp\native-lib.cpp
+    //    In file included from C:\Users\xxx\Desktop\NewPro\app\src\main\cpp\native-lib.cpp:6:
+    //
+    //    C:\Users\xxx\Desktop\NewPro\app\src\main\cpp/N2.h:8:6: error: redefinition of 'hahaha' with a different type: 'long' vs 'int'
+    //
+    //    long hahaha;
+    //
+    //    ^
+    //
+    //    C:\Users\xxx\Desktop\NewPro\app\src\main\cpp/N1.h:8:5: note: previous definition is here
+    //
+    //    int hahaha;
+    //
+    //    ^
+    //
+    //    1 error generated.
+    // ************************************************
+    // More information about global variables
+    // The right way to announce it should be like external datatype dataname;
+    // And then give its define in some file else.
+    // The reason of this is because if we use #include to include some header files, without external it will
+    // show the error of multiple definition like this:
+    // ************************************************
+    //    Build command failed.
+    //            Error while executing process C:\Users\xxx\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe with arguments {--build C:\Users\xxx\Desktop\NewPro\app\.externalNativeBuild\cmake\debug\x86_64 --target native-lib}
+    //    [1/3] Building CXX object CMakeFiles/native-lib.dir/native-lib.cpp.o
+    //    [2/3] Building CXX object CMakeFiles/native-lib.dir/N2.cpp.o
+    //    [3/3] Linking CXX shared library C:\Users\xxx\Desktop\NewPro\app\build\intermediates\cmake\debug\obj\x86_64\libnative-lib.so
+    //    FAILED: cmd.exe /C "cd . && C:\Users\xxx\AppData\Local\Android\Sdk\ndk-bundle\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe  --target=x86_64-none-linux-android26 --gcc-toolchain=C:/Users/xxx/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/xxx/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot -fPIC -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -static-libstdc++ -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -shared -Wl,-soname,libnative-lib.so -o C:\Users\xxx\Desktop\NewPro\app\build\intermediates\cmake\debug\obj\x86_64\libnative-lib.so CMakeFiles/native-lib.dir/native-lib.cpp.o CMakeFiles/native-lib.dir/N1.cpp.o CMakeFiles/native-lib.dir/N2.cpp.o  -llog -latomic -lm && cd ."
+    //    C:/Users/xxx/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib/gcc/x86_64-linux-android/4.9.x/../../../../x86_64-linux-android/bin\ld: error: CMakeFiles/native-lib.dir/N2.cpp.o: multiple definition of 'aaaaa'
+    //
+    //    C:/Users/xxx/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib/gcc/x86_64-linux-android/4.9.x/../../../../x86_64-linux-android/bin\ld: CMakeFiles/native-lib.dir/native-lib.cpp.o: previous definition here
+    //
+    //    clang++.exe: error: linker command failed with exit code 1 (use -v to see invocation)
+    //
+    //    ninja: build stopped: subcommand failed.
+}
