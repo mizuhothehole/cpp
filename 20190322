@@ -187,6 +187,30 @@ public:
         mb = b;
     }
 
+    Myclass operator++(int) {
+        this->ma = this->ma + 1;
+        this->mb = this->mb + 1;
+        return *this;
+    }
+
+    Myclass operator++() {
+        this->ma = this->ma + 1;
+        this->mb = this->mb + 1;
+        return *this;
+    }
+
+    Myclass operator--(int) {
+        this->ma = this->ma - 1;
+        this->mb = this->mb - 1;
+        return *this;
+    }
+
+    Myclass operator--() {
+        this->ma = this->ma - 1;
+        this->mb = this->mb - 1;
+        return *this;
+    }
+
     Myclass operator+(Myclass mc) {
         this->ma = this->ma + mc.ma;
         this->mb = this->mb + mc.mb;
@@ -211,6 +235,7 @@ public:
         return *this;
     }
 
+
     void print() {
     }
 };
@@ -227,6 +252,10 @@ Java_com_example_ishiiaya_myapplication_MainActivity_stringFromJNI(
     Myclass c4 = c1 - c2;
     Myclass c5 = c1 * c2;
     Myclass c6 = c1 / c2;
+    c6 = c6++;
+    c6 = ++c6;
+    c6 = --c6;
+    c6 = c6--;
     c3.print();
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
