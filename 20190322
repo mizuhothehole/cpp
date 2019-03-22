@@ -136,4 +136,36 @@ Java_ntt_1atc_co_jp_myapplication_MainActivity_stringFromJNI(
     //    clang++.exe: error: linker command failed with exit code 1 (use -v to see invocation)
     //
     //    ninja: build stopped: subcommand failed.
+        // More information about cpp exceptions.
+    //#ifndef NEWPRO_N1_H
+    //    #define NEWPRO_N1_H
+    //
+    //#include <jni.h>
+    //#include <exception>
+    //#include <stdexcept> // std::runtime_error
+    //
+    //extern int hahaha4444;
+    //
+    //namespace test {
+    //    typedef int test;
+    //
+    //    class testClass {
+    //    public:
+    //        void hihi() noexcept {
+    //            throw std::runtime_error("there is error runtime");
+    //        };
+    //    };
+    //}
+    //
+    //#endif //NEWPRO_N1_H
+    // ************************************************
+    // This may lead to error, because you say there is no exception but it throws an exception.
+    // ************************************************
+    // More information about the namespace:
+    // If we want to use a class or a struct or anything else, we should try to use include to 
+    // include the header file. And may there is namespace define in the header file.
+    // So as a result we could be able to use the :: mark to specify the namespace.
+    // Only by using namespace::classname is not enough. So in fact, name space is only for checking
+    // multiple definition and to group those elements that are for the same function.
+    // ************************************************
 }
