@@ -1,0 +1,13 @@
+how to define struct in class and use
+
+可以直接在类里面声明struct。
+而且可以用双冒号调用struct。类似于静态函数那样子。
+
+full vision of struct
+
+struct里面可以有自己定义的函数，也可以有自己定义的构造函数，
+以及析构函数。
+
+how to define struct in struct and use
+
+也是双冒号。如果是成员，那么用点儿。指针用箭头。
