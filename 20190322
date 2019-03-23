@@ -235,6 +235,18 @@ public:
         return *this;
     }
 
+    // 编译器隐式地将类内定义的成员函数当作是内联函数。
+    inline const Myclass &doSomeqthing(const int) const {
+        int cc = ma;
+        // ma = 2; //编译错误，因为函数被声明为const，类成员变量不能被修改。
+        return *this;
+    }
+
+    // cpp里面的const修饰符：
+    // 对于函数的声明里的const，对于基本类型的修饰，const表示只传递一个实参的副本
+    // 对于指针和引用的传递，const只会传递一个成员不会被改变的指针或者引用
+    // 对于返回值被const修饰的，表示的意思是返回值不会被修改。
+    // 对于最后面用const修饰的，表示的是不能修改类的成员。
 
     void print() {
     }
