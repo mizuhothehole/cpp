@@ -242,11 +242,47 @@ public:
         return *this;
     }
 
-    // cpp里面的const修饰符：
+    // cpp里面的const修饰：
     // 对于函数的声明里的const，对于基本类型的修饰，const表示只传递一个实参的副本
     // 对于指针和引用的传递，const只会传递一个成员不会被改变的指针或者引用
     // 对于返回值被const修饰的，表示的意思是返回值不会被修改。
     // 对于最后面用const修饰的，表示的是不能修改类的成员。
+    //    int &f1();
+    //
+    //    f1()=5;
+    //    ...
+    //    ...
+    //    int &f1() {
+    //        int i;
+    //        int &ri=i;
+    //        return ri;
+    //    }
+    // 上面的代码有问题。原因是ri声明的是函数内部，后面返回的时候早就已经被回收了。
+    //
+    // *****************************************************
+    // 关于函数内的返回值
+    // 重要的事情说三遍，一定不要返回栈上的地址。注意是地址。因为不知道什么时候它就会被回收了。
+    // 有的时候struct之类的有可能没有被回收，可是迟早都会被回收的。会给我们造成幻觉！
+
+    struct mys {
+
+        int name;
+        int age;
+
+        // struct中的构造函数和析构函数
+        mys() {
+        };
+
+        ~mys() {
+        }
+    };
+
+    int const &test(int &n)//通过引用传递参数
+    {
+        n++;
+        return n;
+    }
+
 
     void print() {
     }
@@ -269,6 +305,10 @@ Java_com_example_ishiiaya_myapplication_MainActivity_stringFromJNI(
     c6 = --c6;
     c6 = c6--;
     c3.print();
+    c3.doSomeqthing(222);
+    int j = 2;
+    int &i = j;
+    int m = c4.test(i);
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
 }
