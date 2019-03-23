@@ -286,6 +286,10 @@ public:
 
     void print() {
     }
+
+    void &linked() {
+
+    }
 };
 
 JNIEXPORT jstring
@@ -309,6 +313,16 @@ Java_com_example_ishiiaya_myapplication_MainActivity_stringFromJNI(
     int j = 2;
     int &i = j;
     int m = c4.test(i);
+    c4.linked();
+    c5.linked();
     std::string hello = "Hello from C++";
+    std::string a = "adasdsad";
+    std::string b = "32144124124";
+    std::string c;
+    std::string sss = a + b;
+    c = a.append("a");
+    bool dada = 4 < 5 < 3 < 7;
+    bool de = (dada++);
+    bool dda = (++dada)++; // some operators are not able to be assigned with expression
     return env->NewStringUTF(hello.c_str());
 }
