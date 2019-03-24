@@ -78,3 +78,9 @@ void test(){
         putchar(c);
     } while (c != EOF);
     fclose(fp);
+    __LINE__;
+    __DATE__:
+    __TIME__:
+内置
+    do {几个宏
+    do {几个
