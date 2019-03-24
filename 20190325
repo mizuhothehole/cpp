@@ -1,0 +1,22 @@
+The template of class
+
+类模版：
+　　　　template<class  形参名，class 形参名，…>   class 类名
+
+方法模版：
+　　　　template <class 形参名，class 形参名，......> 返回类型 函数名(参数列表)
+
+两种模版都可以随便使用。
+
+template<class T>
+bool tpl(T a, T b) {
+    return a > b;
+};
+
+    tpl(22, 33);
+    tpl(aa, bb);
+    tpl('a', 'b');
+    tpl(2.2, 3.3);
+    tpl("aaaa", "bbbb");
+    
+编译都不报任何都错误。
