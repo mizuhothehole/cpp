@@ -28,3 +28,33 @@ Hello World127 32767 9223372036854775807 2147483647
 
 上面的那个点是因为字符定义，char，所以导致了这样的显示。其实我不太知道limits.h这个c库东西是干什么的，可是好像能显示
 好几个最大值的样子。
+
+
+#include <limits.h>
+#include <iostream>
+#include <string>
+
+using namespace std;
+using namespace __cxxabiv1;
+
+void test(){
+    long aa = __SCHAR_MAX__;
+    long bb = __SHRT_MAX__;
+    long cc = __LONG_MAX__;
+    long dd = __INT_MAX__;
+
+    SCHAR_MIN;
+    SHRT_MIN;
+    INT_MIN;
+    LONG_MIN;
+
+    UCHAR_MAX;
+    USHRT_MAX;
+    UINT_MAX;
+    ULONG_MAX;
+    cout << string("sss");
+    __cxxabiv1::__forced_unwind a;
+}
+
+这个例子里面可以看的恨清楚，我们可以使用多个命名空间。
+而我目前的主要目的还是为了学习cpp，c。还有它们的一些库。
