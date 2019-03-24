@@ -81,6 +81,22 @@ void test(){
     __LINE__;
     __DATE__:
     __TIME__:
-内置
-    do {几个宏
-    do {几个
+
+这些都是编译器内置宏
+
+关于sort():
+这个是什么呢？
+主要针对它用在数组的时候的用法。那就是头指针，然后是最后一个元素的下一个位置。
+通过这两个位置就可以确定正确的去排序。
+int main()
+{
+    char ast[20] = {'c', 'w', 'd', 'a', 'q', 'm', 'n', 'b', 't', 'y', 'u', 'i', 'o', 'p'};
+    sort(ast, ast + 14);
+    for(int i = 0; i < 14; i ++) {
+        cout << ast[i] << "-";
+    }
+    return 0;
+}
+
+然后输出
+Hello Worlda-b-c-d-i-m-n-o-p-q-t-u-w-y-                                                                        
