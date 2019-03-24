@@ -1,0 +1,30 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include <limits.h>
+
+using namespace std;
+
+int main()
+{
+    cout<<"Hello World";
+    signed char aa = __SCHAR_MAX__;
+    short int bb = __SHRT_MAX__;
+    long cc = __LONG_MAX__;
+    int dd = __INT_MAX__;
+    cout<<aa<<" "<<bb<<" "<<cc<<" "<<dd;
+    return 0;
+}
+
+Hello World 32767 9223372036854775807 2147483647  
+
+Hello World127 32767 9223372036854775807 2147483647 
+
+上面的那个点是因为字符定义，char，所以导致了这样的显示。其实我不太知道limits.h这个c库东西是干什么的，可是好像能显示
+好几个最大值的样子。
