@@ -112,3 +112,8 @@ int b;
 [a][][][][b][b][b][b]
 
 when cpu reading memory, it can be faster. So the memory size used by class will also be affected by this.
+
+&:
+this will not cost any memory.
+And when used as methodd parameter, normally it costs memory for copying as the input. 
+However, if it is "&", the memory cost is zero.
