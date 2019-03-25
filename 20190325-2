@@ -126,3 +126,5 @@ this will come out under here:
     }
     
     and this is the copy with method parameter or "="
+
+PROP_APP_ABI=x86_64
