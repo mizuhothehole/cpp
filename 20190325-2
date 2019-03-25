@@ -100,3 +100,15 @@ select charactor
 |
 ↓
 「to be continued」
+
+メモリ揃え
+
+空間を使って時間を稼ぐ。
+struct and class all use memory align.
+struct ss{
+byte a;
+int b;
+}
+[a][][][][b][b][b][b]
+
+when cpu reading memory, it can be faster. So the memory size used by class will also be affected by this.
