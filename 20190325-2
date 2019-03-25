@@ -17,3 +17,23 @@ The result of preprocessing is a single file which is then passed to the actual 
 Each directive occupies one line and has the following format"
 行ごとの指令になります。
 
+"An expression is a sequence of operators and their operands, that specifies a computation."
+しかし、operationは事前にcpp言語で定義されたので。種類は限られてます。ちなみに、"throw"はオペレーターじゃありません。
+
+LANGUAGE LINKAGE
+"Provides for linkage between modules written in different programming languages."
+キーワード"extern"
+
+INITIALIZATION
+"nitialization of a variable provides its initial value at the time of construction.
+The initial value may be provided in the initializer section of a declarator or a new expression. 
+It also takes place during function calls: 
+function parameters and the function return values are also initialized."
+関数の初期値と返却値初期化される。
+あるコンパイラのテストによると：
+
+Hello World4196064
+Hello World0
+Hello World6295648
+Hello World4196064
+Hello World0
