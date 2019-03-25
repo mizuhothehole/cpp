@@ -117,3 +117,12 @@ when cpu reading memory, it can be faster. So the memory size used by class will
 this will not cost any memory.
 And when used as methodd parameter, normally it costs memory for copying as the input. 
 However, if it is "&", the memory cost is zero.
+this will come out under here:
+//拷贝构造函数
+    CExample(const CExample & c)
+    {
+        a=c.a;
+        printf("copy constructor is called\n");
+    }
+    
+    and this is the copy with method parameter or "="
