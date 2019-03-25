@@ -50,3 +50,20 @@ C++ 03 year of 2003
 C++ 11 year of 2011
 C++ 14 year of 2014
 C++ 17 year of 2017
+
+// あはは。。。なるほど
+#include <jni.h>
+#include <string>
+
+#define SOMEATTR __attribute__((visibility("default")))
+#define SOME_EMPTY
+extern "C" SOMEATTR void SOME_EMPTY doSomething() {
+}
+extern "C" JNIEXPORT jstring JNICALL
+Java_ntt_1atc_co_jp_myapplication_MainActivity_stringFromJNI(
+        JNIEnv *env,
+        jobject /* this */) {
+    std::string hello = "Hello from C++";
+    doSomething();
+    return env->NewStringUTF(hello.c_str());
+}
