@@ -40,3 +40,6 @@ Hello World0
 
 c++ coding rules.
 https://google.github.io/styleguide/cppguide.html
+
+HEADERS
+c言語のxxx.hを対応する為に、cxxxと言うc++のheaderが普通に存在する。しかし、string.hとstringが全然関係ないheaderです。
