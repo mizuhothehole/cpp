@@ -67,3 +67,36 @@ Java_ntt_1atc_co_jp_myapplication_MainActivity_stringFromJNI(
     doSomething();
     return env->NewStringUTF(hello.c_str());
 }
+
+Game prototype:
+
+(scene1)<windows size?>
+(layer)<add to scene?>
+--------------------
+title
+--------------------
+|
+|█
+|(start button)<action to transfer to next scene?>
+|
+↓
+(scene2)<windows size?>
+(layer)<add to scene?>
+--------------------
+select charactor
+--------------------
+〇〇〇〇〇(sprites)<positions? align?pictures to be prepared?>
+〇〇〇〇〇
+--------------------
+|
+|
+|
+|
+↓
+(11 kinds of charactors)
+|
+|
+|
+|
+↓
+「to be continued」
