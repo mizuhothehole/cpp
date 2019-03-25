@@ -43,3 +43,10 @@ https://google.github.io/styleguide/cppguide.html
 
 HEADERS
 c言語のxxx.hを対応する為に、cxxxと言うc++のheaderが普通に存在する。しかし、string.hとstringが全然関係ないheaderです。
+
+cppバージョン:
+C++ 98 year of 1998
+C++ 03 year of 2003
+C++ 11 year of 2011
+C++ 14 year of 2014
+C++ 17 year of 2017
