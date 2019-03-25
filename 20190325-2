@@ -1,0 +1,19 @@
+terminology n.専門用語
+undergo v.経歴する
+structed-binding n.オフィシャルの紹介を見てみると、配列とタプルしか紹介されてない。言いたいことは、宣言する時に、柔軟性が高まる
+parameter-pack n."..."のようなパラメータパック
+odr-used n.cppの専門用語。何かの環境でただ一つの定義のルールを守らないと
+non-static data members n.cppの専門用語。クラスのメンバー
+directive n.指令
+capability n.能力
+
+PREPROCESSOR
+"The preprocessor is executed at translation phase 4, 
+before the compilation. 
+The result of preprocessing is a single file which is then passed to the actual compiler."
+通訳のフェーズ4、コンパイルの前。プレコンパイルの結果は一つファイルとして、コンパイラの渡す。
+
+"The preprocessing directives control the behavior of the preprocessor.
+Each directive occupies one line and has the following format"
+行ごとの指令になります。
+
