@@ -32,3 +32,8 @@ time_t 这种类型就是用来存储从1970年到现在经过了多少秒
 
 friend class
 friend class could access private and protected menmers of current class.
+
+cpp new delete
+
+delete will call the ~ function.
+delete just release the memory and do not delete pointer
