@@ -1,0 +1,11 @@
+typedef bool INT;
+
+class Cls {
+private:
+    INT b;
+public:
+    typedef int INT;
+    INT a;
+};
+
+This works well, and the first INT is bool, the second INT is int.
