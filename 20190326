@@ -1,0 +1,34 @@
+explicit and template
+
+this means the constructor of the class with explicit should only be used as explicit.
+Like this:
+ClassA a(2); -> OK
+ClassA b = a;
+
+template<class A, class B>
+class MyClass {
+public:
+    MyClass() {
+    }
+
+    MyClass(A aa) {
+    }
+
+    MyClass(const MyClass &m) {
+        ta = m.ta;
+    }
+
+private:
+    A ta;
+};
+
+// MyClass cc; // compile error as there is no default constructor
+MyClass aaa(1);
+MyClass aaa2 = 1;
+MyClass dd = aaa2;
+
+time_t 这种类型就是用来存储从1970年到现在经过了多少秒
+而tm直接存储年月日的是一个结构
+
+friend class
+friend class could access private and protected menmers of current class.
