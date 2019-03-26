@@ -9,3 +9,4 @@ public:
 };
 
 This works well, and the first INT is bool, the second INT is int.
+派生クラス内で基底クラスの protected メンバーにアクセスできるのは、派生クラスの型を通してアクセスした場合のみです。
