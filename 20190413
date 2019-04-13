@@ -23,7 +23,6 @@
  ****************************************************************************/
 
 #include "HelloWorldScene.h"
-#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -121,7 +120,7 @@ bool HelloWorld::init() {
 // trigger when you push down
     listener1->onTouchBegan = [](Touch *touch, Event *event) {
         // your code
-        return true; // if you are consuming it -> It is important to understand z-order and event dispatching
+        return true; // if you are consuming it
     };
 
 // trigger when moving touch
@@ -133,7 +132,10 @@ bool HelloWorld::init() {
     listener1->onTouchEnded = [=](Touch *touch, Event *event) {
         // your code
         // ToDo: change to next scene
-        Director::getInstance()->end();
+        this->removeAllChildren();
+        auto text = TextFieldTTF::textFieldWithPlaceHolder("test", "Arial", 30);
+        text->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+        this->addChild(text);
     };
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, sprite);
 
@@ -152,13 +154,3 @@ void HelloWorld::menuCloseCallback(Ref *pSender) {
 
 
 }
-
-关于cpp的匿名函数
-形式上是这样的：［外部変数のアクセス制御］（パラメータ）->{ロジック};
-
-[]        //no variables defined. Attempting to use any external variables in the lambda is an error.
-[x, &y]   //x is captured by value, y is captured by reference
-[&]       //any external variable is implicitly captured by reference if used
-[=]       //any external variable is implicitly captured by value if used
-[&, x]    //x is explicitly captured by value. Other variables will be captured by reference
-[=, &z]   //z is explicitly captured by reference. Other variables will be captured by value
