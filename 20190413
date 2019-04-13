@@ -152,3 +152,13 @@ void HelloWorld::menuCloseCallback(Ref *pSender) {
 
 
 }
+
+关于cpp的匿名函数
+形式上是这样的：［外部変数のアクセス制御］（パラメータ）->{ロジック};
+
+[]        //no variables defined. Attempting to use any external variables in the lambda is an error.
+[x, &y]   //x is captured by value, y is captured by reference
+[&]       //any external variable is implicitly captured by reference if used
+[=]       //any external variable is implicitly captured by value if used
+[&, x]    //x is explicitly captured by value. Other variables will be captured by reference
+[=, &z]   //z is explicitly captured by reference. Other variables will be captured by value
