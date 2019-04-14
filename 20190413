@@ -183,7 +183,7 @@ bool HelloWorld::init() {
                 text->setPosition(
                         Vec2(visibleSize.width / 2 + origin.x + (j - 1.5) * 40,
                              visibleSize.height / 2 + origin.y + (i - 1.5) * 40));
-                if ((currentpuzzle.strings[3 - i][j]) == ("?")) {
+                if ((randomPuzzle.strings[3 - i][j]) == ("?")) {
                     text->setEnabled(true);
                     text->setColor(Color3B::RED);
                     currenttext = text;
@@ -203,7 +203,7 @@ bool HelloWorld::init() {
                 case ui::Widget::TouchEventType::BEGAN:
                     break;
                 case ui::Widget::TouchEventType::ENDED:
-                    if ((currenttext->getString() == randomPuzzle.answer)) {
+                    if ((currenttext->getString() == currentpuzzle.answer)) {
                         auto text = cocos2d::ui::TextField::create("YOU ARE RIGHT", "Arial",
                                                                    30);
                         text->setTag(100);
@@ -259,7 +259,7 @@ bool HelloWorld::init() {
                                             Vec2(visibleSize.width / 2 + origin.x + (j - 1.5) * 40,
                                                  visibleSize.height / 2 + origin.y +
                                                  (i - 1.5) * 40));
-                                    if ((currentpuzzle.strings[3 - i][j]) == ("?")) {
+                                    if ((randomPuzzle.strings[3 - i][j]) == ("?")) {
                                         text->setEnabled(true);
                                         text->setColor(Color3B::RED);
                                         currenttext = text;
