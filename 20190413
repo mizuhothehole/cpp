@@ -22,9 +22,17 @@
  THE SOFTWARE.
  ****************************************************************************/
 
+#include <iostream>
+#include <cocos/ui/UITextField.h>
+#include <cocos/ui/UIButton.h>
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
+
+struct puzzle {
+    std::string strings[4][4];
+    std::string answer;
+};
 
 Scene *HelloWorld::createScene() {
     return HelloWorld::create();
@@ -116,7 +124,6 @@ bool HelloWorld::init() {
         this->addChild(sprite, 0);
     }
     auto listener1 = EventListenerTouchOneByOne::create();
-
 // trigger when you push down
     listener1->onTouchBegan = [](Touch *touch, Event *event) {
         // your code
@@ -133,9 +140,145 @@ bool HelloWorld::init() {
         // your code
         // ToDo: change to next scene
         this->removeAllChildren();
-        auto text = TextFieldTTF::textFieldWithPlaceHolder("test", "Arial", 30);
-        text->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-        this->addChild(text);
+        puzzle puzzle1[] = {{
+                                    {
+                                            {"?", "马", "平", "川"},
+                                            {"帆", "", "", ""},
+                                            {"风", "",  "",  ""},
+                                            {"顺", "", "", ""},
+                                    },
+                                    "一"
+                            },
+                            {
+                                    {
+                                            {"?", "如", "既", "往"},
+                                            {"往", "", "", ""},
+                                            {"无", "",  "",  ""},
+                                            {"前", "", "", ""},
+                                    },
+                                    "一"
+                            },
+                            {
+                                    {
+                                            {"一", "",  "",  ""},
+                                            {"往", "", "", ""},
+                                            {"?", "欲", "无", "求"},
+                                            {"前", "", "", ""},
+                                    },
+                                    "无"
+                            },
+        };
+        static cocos2d::ui::TextField *currenttext;
+        static puzzle currentpuzzle;
+        srandom(time(NULL));
+        int a = random(0, (int) (sizeof(puzzle1) / sizeof(*puzzle1)) - 1);
+        puzzle randomPuzzle = puzzle1[a];
+        currentpuzzle = randomPuzzle;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                auto text = cocos2d::ui::TextField::create(randomPuzzle.strings[3 - i][j], "Arial",
+                                                           30);
+                text->setTag(10 * i + j);
+                text->setMaxLength(2);
+                text->setPosition(
+                        Vec2(visibleSize.width / 2 + origin.x + (j - 1.5) * 40,
+                             visibleSize.height / 2 + origin.y + (i - 1.5) * 40));
+                if ((currentpuzzle.strings[3 - i][j]) == ("?")) {
+                    text->setEnabled(true);
+                    text->setColor(Color3B::RED);
+                    currenttext = text;
+                } else {
+                    text->setEnabled(false);
+                }
+                this->addChild(text);
+            }
+        }
+        auto button = cocos2d::ui::Button::create("ok.jpeg", "ok.jpeg", "ok.jpeg");
+
+        button->setTitleText("");
+        button->setPosition(Vec2(visibleSize.width / 2 + origin.x, origin.y + 30));
+        button->setScale(0.5);
+        button->addTouchEventListener([=](Ref *sender, cocos2d::ui::Widget::TouchEventType type) {
+            switch (type) {
+                case ui::Widget::TouchEventType::BEGAN:
+                    break;
+                case ui::Widget::TouchEventType::ENDED:
+                    if ((currenttext->getString() == randomPuzzle.answer)) {
+                        auto text = cocos2d::ui::TextField::create("YOU ARE RIGHT", "Arial",
+                                                                   30);
+                        text->setTag(100);
+                        text->setMaxLength(2);
+                        text->setFontSize(50);
+                        text->setColor(Color3B::RED);
+                        text->setEnabled(false);
+                        text->setPosition(
+                                Vec2(visibleSize.width / 2 + origin.x,
+                                     visibleSize.height / 2 + origin.y));
+                        this->addChild(text);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        auto refreshBtn = cocos2d::ui::Button::create("refresh.jpg", "refresh.jpg", "refresh.jpg");
+        refreshBtn->setTitleText("");
+        refreshBtn->setPosition(Vec2(visibleSize.width / 2 - 40 + origin.x, origin.y + 30));
+        refreshBtn->setScale(0.25);
+        refreshBtn->addTouchEventListener(
+                [=](Ref *sender, cocos2d::ui::Widget::TouchEventType type) {
+                    switch (type) {
+                        case ui::Widget::TouchEventType::BEGAN:
+                            break;
+                        case ui::Widget::TouchEventType::ENDED: {
+                            for (int i = 0; i < 4; i++) {
+                                for (int j = 0; j < 4; j++) {
+                                    Node *node = this->getChildByTag(10 * i + j);
+                                    if (NULL != node) {
+                                        this->removeChildByTag(10 * i + j, true);
+                                    }
+                                }
+                            }
+                            Node *nodeP = this->getChildByTag(100);
+                            if (NULL != nodeP) {
+                                this->removeChildByTag(100);
+                            }
+                            srandom(time(NULL));
+                            int a = random(0, (int) (sizeof(puzzle1) / sizeof(*puzzle1)) - 1);
+                            puzzle randomPuzzle = puzzle1[a];
+                            currentpuzzle = randomPuzzle;
+                            for (int i = 0; i < 4; i++) {
+                                for (int j = 0; j < 4; j++) {
+                                    auto text = cocos2d::ui::TextField::create(
+                                            randomPuzzle.strings[3 - i][j], "Arial",
+                                            30);
+                                    text->setTag(10 * i + j);
+                                    text->setMaxLength(2);
+                                    text->setPosition(
+                                            Vec2(visibleSize.width / 2 + origin.x + (j - 1.5) * 40,
+                                                 visibleSize.height / 2 + origin.y +
+                                                 (i - 1.5) * 40));
+                                    if ((currentpuzzle.strings[3 - i][j]) == ("?")) {
+                                        text->setEnabled(true);
+                                        text->setColor(Color3B::RED);
+                                        currenttext = text;
+                                    } else {
+                                        text->setEnabled(false);
+                                    }
+                                    this->addChild(text);
+                                }
+                            }
+                            break;
+                        }
+                        default:
+                            break;
+                    }
+                });
+
+        this->addChild(button);
+        this->addChild(refreshBtn);
+
     };
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, sprite);
 
