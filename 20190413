@@ -23,6 +23,7 @@
  ****************************************************************************/
 
 #include <iostream>
+#include <stdlib.h>
 #include <cocos/ui/UITextField.h>
 #include <cocos/ui/UIButton.h>
 #include "HelloWorldScene.h"
@@ -54,6 +55,7 @@ bool HelloWorld::init() {
 
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    Director::getInstance()->setClearColor(Color4F(0.2, 0.1, 0.4, 1));
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
@@ -145,7 +147,7 @@ bool HelloWorld::init() {
                                             {"?", "马", "平", "川"},
                                             {"帆", "", "", ""},
                                             {"风", "",  "",  ""},
-                                            {"顺", "", "", ""},
+                                            {"顺", "",  "",  ""},
                                     },
                                     "一"
                             },
@@ -154,7 +156,7 @@ bool HelloWorld::init() {
                                             {"?", "如", "既", "往"},
                                             {"往", "", "", ""},
                                             {"无", "",  "",  ""},
-                                            {"前", "", "", ""},
+                                            {"前", "",  "",  ""},
                                     },
                                     "一"
                             },
@@ -163,13 +165,45 @@ bool HelloWorld::init() {
                                             {"一", "",  "",  ""},
                                             {"往", "", "", ""},
                                             {"?", "欲", "无", "求"},
-                                            {"前", "", "", ""},
+                                            {"前", "",  "",  ""},
                                     },
                                     "无"
+                            },
+                            {
+                                    {
+                                            {"一", "",  "",  ""},
+                                            {"往", "", "", ""},
+                                            {"无", "",  "",  ""},
+                                            {"?", "无", "古", "人"},
+                                    },
+                                    "前"
                             },
         };
         static cocos2d::ui::TextField *currenttext;
         static puzzle currentpuzzle;
+        static int currrentPt = 0;
+        auto textHint = cocos2d::ui::TextField::create("得分：", "Arial",
+                                                       10);
+        textHint->setTag(105);
+        textHint->setMaxLength(2);
+        textHint->setFontSize(15);
+        textHint->setColor(Color3B::RED);
+        textHint->setEnabled(false);
+        textHint->setPosition(Vec2(visibleSize.width + origin.x - 70,
+                                   visibleSize.height + origin.y - 20));
+        this->addChild(textHint);
+
+        auto textPt = cocos2d::ui::TextField::create(std::to_string(currrentPt), "Arial",
+                                                     10);
+        textPt->setTag(105);
+        textPt->setMaxLength(2);
+        textPt->setFontSize(15);
+        textPt->setColor(Color3B::RED);
+        textPt->setEnabled(false);
+        textPt->setPosition(Vec2(visibleSize.width + origin.x - 30,
+                                 visibleSize.height + origin.y - 20));
+        this->addChild(textPt);
+
         srandom(time(NULL));
         int a = random(0, (int) (sizeof(puzzle1) / sizeof(*puzzle1)) - 1);
         puzzle randomPuzzle = puzzle1[a];
@@ -204,7 +238,7 @@ bool HelloWorld::init() {
                     break;
                 case ui::Widget::TouchEventType::ENDED:
                     if ((currenttext->getString() == currentpuzzle.answer)) {
-                        auto text = cocos2d::ui::TextField::create("YOU ARE RIGHT", "Arial",
+                        auto text = cocos2d::ui::TextField::create("你答对了", "Arial",
                                                                    30);
                         text->setTag(100);
                         text->setMaxLength(2);
@@ -215,6 +249,8 @@ bool HelloWorld::init() {
                                 Vec2(visibleSize.width / 2 + origin.x,
                                      visibleSize.height / 2 + origin.y));
                         this->addChild(text);
+                        currrentPt += 1;
+                        textPt->setString(std::to_string(currrentPt));
                     }
                     break;
                 default:
@@ -225,7 +261,7 @@ bool HelloWorld::init() {
         auto refreshBtn = cocos2d::ui::Button::create("refresh.jpg", "refresh.jpg", "refresh.jpg");
         refreshBtn->setTitleText("");
         refreshBtn->setPosition(Vec2(visibleSize.width / 2 - 40 + origin.x, origin.y + 30));
-        refreshBtn->setScale(0.25);
+        refreshBtn->setScale(0.23);
         refreshBtn->addTouchEventListener(
                 [=](Ref *sender, cocos2d::ui::Widget::TouchEventType type) {
                     switch (type) {
